@@ -1,0 +1,27 @@
+{
+  "name": "HackerRank",
+  "version": "1.0.0",
+  "description": "",
+  "main": "test.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "node tests/newYearChaosTest.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Somaliika/HackerRank.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Somaliika/HackerRank/issues"
+  },
+  "homepage": "https://github.com/Somaliika/HackerRank#readme",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.2.2"
+  }
+}
