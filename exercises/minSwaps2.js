@@ -29,6 +29,6 @@ console.log(minimumSwaps([4, 8, 3, 1, 2, 7, 5, 9, 6]));
 console.log(minimumSwaps([4, 3, 1, 2]));
 console.log(minimumSwaps([2, 3, 4, 1, 5]));
 console.log(minimumSwaps([1, 3, 5, 2, 4, 6, 7]));
-const readLine = fs.readFileSync('input10.txt', 'utf8');
+const readLine = fs.readFileSync('../inputs/input10.txt', 'utf8');
 const arr = readLine.split(' ').map(arrTemp => parseInt(arrTemp, 10));
 console.log(minimumSwaps(arr));

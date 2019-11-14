@@ -2,12 +2,9 @@
   "name": "HackerRank",
   "version": "1.0.0",
   "description": "",
-  "main": "test.js",
-  "directories": {
-    "test": "tests"
-  },
+  "main": "draft.js",
   "scripts": {
-    "test": "node tests/newYearChaosTest.js"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
