@@ -1,7 +1,7 @@
 //https://www.interviewbit.com/problems/hotel-bookings-possible/
 
 // time O(N2)
-function hotelDraft(arrivals, departures, C) {
+const hotelN2 = (arrivals, departures, rooms) => {
   let roomNeeded = 0;
   let i_arrival = 0;
   let i_departure = 0;
@@ -15,24 +15,92 @@ function hotelDraft(arrivals, departures, C) {
       roomNeeded--;
       i_departure++;
     }
-    if (roomNeeded > C) return false;
+    if (roomNeeded > rooms) return false;
   }
   return true;
-}
+};
 
 // time O(N log N)
-function hotel(arrivals, departures, C) {
+const hotelNlogN = (arrivals, departures, rooms) => {
   arrivals.sort((a, b) => a - b);
   departures.sort((a, b) => a - b);
   for (let i = 0; i < arrivals.length; i++) {
-    if (i + C < arrivals.length && arrivals[i + C] < departures[i]) {
+    if (i + rooms < arrivals.length && arrivals[i + rooms] < departures[i]) {
       return false;
     }
   }
   return true;
-}
+};
 
-console.log(hotel([1, 3, 5], [2, 6, 8], 1));
-console.log(hotel([ 1, 2, 3 ], [ 2, 3, 4 ], 1));
-console.log(hotel([ 13, 14, 36, 19, 44, 1, 45, 4, 48, 23, 32, 16, 37, 44, 47, 28, 8, 47, 4, 31, 25, 48, 49, 12, 7, 8 ],
-  [ 28, 27, 61, 34, 73, 18, 50, 5, 86, 28, 34, 32, 75, 45, 68, 65, 35, 91, 13, 76, 60, 90, 67, 22, 51, 53 ], 23));
+// time O(N) = O(N * 14 + N + N) = O(3N)
+const hotelN = (arrivals, departures, rooms) => {
+  // create map for all dates during each checkin and checkout
+  // count number of already booked rooms for each of these dates
+  const bookingDates = {};
+  for (let i = 0; i < arrivals.length; i++) {
+    for (let day = arrivals[i]; day < departures[i]; day++) {
+      if (bookingDates[day]) bookingDates[day]++;
+      else bookingDates[day] = 1;
+    }
+  }
+  // check all our days in map whether all rooms are booked
+  for (let i = 0; i < arrivals.length; i++) {
+    if (bookingDates[arrivals[i]] && bookingDates[arrivals[i]] > rooms) {
+      return false;
+    }
+  }
+  for (let i = 0; i < departures.length; i++) {
+    if (bookingDates[departures[i] - 1] && bookingDates[departures[i] - 1] > rooms) {
+      return false;
+    }
+  }
+  return true;
+};
+
+exports.hotel = hotelN;
+// exports.hotel = hotelNlogN;
+
+const reservationOverlaps = (booking1, booking2) => {
+  return (new Date(booking1.checkin).getTime() >= new Date(booking2.checkin).getTime() &&
+    new Date(booking1.checkin).getTime() <= new Date(booking2.checkout).getTime()) ||
+  (new Date(booking1.checkout).getTime() >= new Date(booking2.checkin).getTime() &&
+    new Date(booking1.checkout).getTime() <= new Date(booking2.checkout).getTime());
+};
+
+//time O(N) = O(14*N + 14) where 14 - average booking length
+exports.reservation = (reservations, checkin, checkout, rooms) => {
+  if (!reservations) {
+    reservations = [];
+  }
+  // dates are not valid
+  if (!checkin || !checkout || isNaN(new Date(checkin)) || isNaN(new Date(checkout))) {
+    return false;
+  }
+  // dates are in the past or interchanged
+  if (new Date(checkout).getTime() < new Date(checkin).getTime()
+    // should be compared with current date but for test I use last year
+    || new Date(checkin).getTime() < new Date('2019-01-01').getTime()
+    || new Date(checkout).getTime() < new Date('2019-01-01').getTime()) {
+    return false;
+  }
+  // create map for all dates during target checkin and checkout
+  // count number of already booked rooms for each of these dates
+  const bookingDates = {};
+  reservations.forEach((booking) => {
+    if (booking && reservationOverlaps(booking, { checkin, checkout })) {
+      for (let i = new Date(booking.checkin); i < new Date(booking.checkout); i.setDate(i.getDate() + 1)) {
+        if (i.getTime() >= new Date(checkin).getTime() && i.getTime() < new Date(checkout).getTime()) {
+          if (bookingDates[i]) bookingDates[i]++;
+          else bookingDates[i] = 1;
+        }
+      }
+    }
+  });
+  // check all our days in map whether all rooms are booked
+  for (let i = new Date(checkin); i < new Date(checkout); i.setDate(i.getDate() + 1)) {
+    if (bookingDates[i] && bookingDates[i] >= rooms) {
+      return false;
+    }
+  }
+  return true;
+};
