@@ -61,27 +61,27 @@ exports.properties = [
     options: [
       {
         id: 1,
-        name: 'Кухня/мини-кухня',
+        name: 'Kitchen',
         points: 10
       },
       {
         id: 2,
-        name: 'Паркинг',
+        name: 'Parking',
         points: 8.5
       },
       {
         id: 3,
-        name: 'Кондиционер',
+        name: 'Conditioner',
         points: 9
       },
       {
         id: 4,
-        name: 'Ванна',
+        name: 'Bath',
         points: 6
       },
       {
         id: 5,
-        name: 'Балкон',
+        name: 'Balcony',
         points: 5
       }
     ]

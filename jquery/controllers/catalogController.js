@@ -28,15 +28,18 @@ const composeCatalogData = () => {
     // Preparing catalog, calculating points using weight of each attribute
     catalogCache = db.hotels.map((dbdata) => {
         let hotel = { ...dbdata };
+
         // stars
         hotel.points = properties.stars.points * hotel.stars / properties.stars.options.length;
         hotel.stars = properties.stars.options[hotel.stars - 1];
+
         // utilities
         hotel.utilities = [];
         dbdata.utilities.forEach((item) => {
             hotel.utilities.push(properties.utilities.options[item].name);
             hotel.points += properties.utilities.options[item].points;
         });
+
         // reviews
         if (reviews[hotel.id]) {
             const sum = reviews[hotel.id].reduce((sum, review) => {
@@ -51,6 +54,7 @@ const composeCatalogData = () => {
         }
         return hotel;
     });
+
     catalogCache.sort((a,b) => b.points - a.points);
 
     // delete cache to make it update each minute
@@ -75,6 +79,19 @@ const filterByUtilities = (catalog, utilitiesFilter) => {
     });
 };
 
+const filterByStars = (catalog, fromStar, toStar) => {
+    // fromStar, toStar is string with number
+    return catalog.filter((hotel) => {
+        if (fromStar && fromStar.length > 0) {
+            if (hotel.stars[0] < fromStar) return false;
+        }
+        if (toStar && toStar.length > 0) {
+            if (hotel.stars[0] > toStar) return false;
+        }
+        return true;
+    });
+};
+
 module.exports = (req, res) => {
     /* The task is to calculate sum of points to sort hotels */
 
@@ -89,6 +106,9 @@ module.exports = (req, res) => {
 
     // filter by utilities
     if (req.body.selectedUtilities) catalog = filterByUtilities(catalog, req.body.selectedUtilities);
+
+    // filter by star
+    if (req.body.fromStar || req.body.toStar) catalog = filterByStars(catalog, req.body.fromStar, req.body.toStar);
 
     res.send(catalog);
 };
