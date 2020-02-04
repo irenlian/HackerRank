@@ -1,22 +1,20 @@
 function getParameterByName(name, url) {
   if (!url) url = window.location.href;
   name = name.replace(/[\[\]]/g, '\\$&');
-  var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
-    results = regex.exec(url);
+  const regex = new RegExp(`[?&]${name}(=([^&#]*)|&|#|$)`);
+  const results = regex.exec(url);
   if (!results) return null;
   if (!results[2]) return '';
   return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
 
-const header = () => {
-  return '<tr>' +
-    '<td>Room type</td>' +
-    '<td>Sleeps</td>' +
-    '<td>Price</td>' +
-    '<td>Breakfast</td>' +
-    '<td>Select rooms</td>' +
-    '</tr>';
-};
+const header = () => '<tr>'
+    + '<td>Room type</td>'
+    + '<td>Sleeps</td>'
+    + '<td>Price</td>'
+    + '<td>Breakfast</td>'
+    + '<td>Select rooms</td>'
+    + '</tr>';
 
 const room = (item, breakfast = false) => {
   const nights = getParameterByName('nights') || 1;
@@ -27,7 +25,7 @@ const room = (item, breakfast = false) => {
   row += `<td>${item.type}</td>`;
   row += `<td>${item.sleeps}</td>`;
   row += `<td>${finalPrice} UAH</td>`;
-  row += (breakfast) ? `<td>Breakfast is included</td>` : `<td>Breakfast UAH ${item.breakfast}</td>`;
+  row += (breakfast) ? '<td>Breakfast is included</td>' : `<td>Breakfast UAH ${item.breakfast}</td>`;
   row += '<td><select><option value="0">0</option>';
   for (let i = 1; i <= 10; i++) {
     row += `<option value="${i}">${i}\t(UAH ${i * finalPrice})</option>`;
@@ -43,7 +41,7 @@ const parsing = async () => {
     tableContent += room(item, true);
     tableContent += room(item, false);
   });
-  $("table").html(tableContent);
+  $('table').html(tableContent);
 };
 
 $(() => {

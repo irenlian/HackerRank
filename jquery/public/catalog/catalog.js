@@ -4,8 +4,8 @@ const fillCatalog = async () => {
   let list = '';
   const filter = {
     selectedUtilities,
-    fromStar: $("#fromStar").val(),
-    toStar: $("#toStar").val(),
+    fromStar: $('#fromStar').val(),
+    toStar: $('#toStar').val(),
   };
   const hotelList = await $.post('/api/catalog/data', filter).promise();
   hotelList.forEach((hotel) => {
@@ -16,7 +16,7 @@ const fillCatalog = async () => {
     list += `<div>Rate: ${hotel.rate} ${hotel.reviews}</div>`;
     list += '</div>';
   });
-  $("#catalog").html(list);
+  $('#catalog').html(list);
 };
 
 const checkBoxListener = (event) => {
@@ -30,9 +30,7 @@ const checkBoxListener = (event) => {
   }
 };
 
-const checkInputStar = (event) => {
-  return ((event.target.value.length === 0 && event.key >= '0' && event.key <= '5') || event.key === 'Backspace');
-};
+const checkInputStar = (event) => ((event.target.value.length === 0 && event.key >= '0' && event.key <= '5') || event.key === 'Backspace');
 
 const fillFilter = async () => {
   const listAttributes = await $.get('/api/attribute').promise();
@@ -46,10 +44,10 @@ const fillFilter = async () => {
     filterHtml += '<input type=\"text\" value=\"\" name=\"fromStar\" id=\"fromStar\" onkeydown="return checkInputStar(event)">';
     filterHtml += '<span style="padding-top: 10px">Max star rate</span>';
     filterHtml += '<input type=\"text\" value=\"\" name=\"toStar\" id=\"toStar\" onkeydown="return checkInputStar(event)">';
-    $("#filter").html(filterHtml);
-    $("#filter").click(checkBoxListener);
-    $("#fromStar").change(fillCatalog);
-    $("#toStar").change(fillCatalog);
+    $('#filter').html(filterHtml);
+    $('#filter').click(checkBoxListener);
+    $('#fromStar').change(fillCatalog);
+    $('#toStar').change(fillCatalog);
   }
 };
 

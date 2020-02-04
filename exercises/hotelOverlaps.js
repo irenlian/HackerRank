@@ -1,4 +1,4 @@
-//https://www.interviewbit.com/problems/hotel-bookings-possible/
+// https://www.interviewbit.com/problems/hotel-bookings-possible/
 
 // time O(N2)
 const hotelN2 = (arrivals, departures, rooms) => {
@@ -60,14 +60,12 @@ const hotelN = (arrivals, departures, rooms) => {
 exports.hotel = hotelN;
 // exports.hotel = hotelNlogN;
 
-const reservationOverlaps = (booking1, booking2) => {
-  return (new Date(booking1.checkin).getTime() >= new Date(booking2.checkin).getTime() &&
-    new Date(booking1.checkin).getTime() <= new Date(booking2.checkout).getTime()) ||
-  (new Date(booking1.checkout).getTime() >= new Date(booking2.checkin).getTime() &&
-    new Date(booking1.checkout).getTime() <= new Date(booking2.checkout).getTime());
-};
+const reservationOverlaps = (booking1, booking2) => (new Date(booking1.checkin).getTime() >= new Date(booking2.checkin).getTime()
+    && new Date(booking1.checkin).getTime() <= new Date(booking2.checkout).getTime())
+  || (new Date(booking1.checkout).getTime() >= new Date(booking2.checkin).getTime()
+    && new Date(booking1.checkout).getTime() <= new Date(booking2.checkout).getTime());
 
-//time O(N) = O(14*N + 14) where 14 - average booking length
+// time O(N) = O(14*N + 14) where 14 - average booking length
 exports.reservation = (reservations, checkin, checkout, rooms) => {
   if (!reservations) {
     reservations = [];

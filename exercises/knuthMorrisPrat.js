@@ -1,4 +1,4 @@
-//https://github.com/trekhleb/javascript-algorithms/blob/master/src/algorithms/string/knuth-morris-pratt/knuthMorrisPratt.js
+// https://github.com/trekhleb/javascript-algorithms/blob/master/src/algorithms/string/knuth-morris-pratt/knuthMorrisPratt.js
 function buildPatternTable(word) {
   const patternTable = [0];
   let prefixIndex = 0;
@@ -49,4 +49,4 @@ function knuthMorrisPratt(text, word) {
   return -1;
 }
 
-console.log(buildPatternTable("abcabcbabc"));
+console.log(buildPatternTable('abcabcbabc'));

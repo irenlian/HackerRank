@@ -1,7 +1,7 @@
 // https://www.interviewbit.com/problems/prettyprint/
 
 function prettyPrint(A) {
-  let ar = [];
+  const ar = [];
   for (let i = 0; i < A * 2 - 1; i++) {
     ar[i] = [];
     for (let j = 0; j < A * 2 - 1; j++) {

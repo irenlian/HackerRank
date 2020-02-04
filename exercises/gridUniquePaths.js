@@ -1,4 +1,4 @@
-//https://www.interviewbit.com/problems/grid-unique-paths/
+// https://www.interviewbit.com/problems/grid-unique-paths/
 
 function path(x, y, A, B) {
   if (x >= A || y >= B) return 0;
@@ -6,7 +6,7 @@ function path(x, y, A, B) {
   return path(x + 1, y, A, B) + path(x, y + 1, A, B);
 }
 
-function uniquePaths(A, B){
+function uniquePaths(A, B) {
   return path(0, 0, A, B);
 }
 

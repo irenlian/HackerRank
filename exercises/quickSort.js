@@ -1,10 +1,9 @@
 // start and end points to indexes of array between which needs sorting.
 function quickSort(array, start = 0, end = array.length - 1) {
-  if (array.length <= 1 || start >= end)
-    return array;
+  if (array.length <= 1 || start >= end) { return array; }
   const swap = (x, y) => {
     [array[x], array[y]] = [array[y], array[x]];
-  }
+  };
   const pivot = array[end];
   // partitionIndex - index that breaking array for two parts less and greater than pivot.
   // starts from left and incremented after each swap

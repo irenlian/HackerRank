@@ -1,4 +1,4 @@
-//https://www.interviewbit.com/problems/add-one-to-number/
+// https://www.interviewbit.com/problems/add-one-to-number/
 
 function plusOne(A) {
   while (A[0] === 0 && A.length > 1) {
