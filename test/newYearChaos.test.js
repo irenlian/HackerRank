@@ -1,5 +1,5 @@
 const chai = require('chai');
-const minimumBribes = require('../exercises/newYearChaos');
+const minimumBribes = require('../hackerrank/newYearChaos');
 
 describe('New Year Chaos (Medium)', () => {
   before(() => {

@@ -1,5 +1,5 @@
 const chai = require('chai');
-const freqQuery = require('../exercises/freqQuery');
+const freqQuery = require('../hackerrank/freqQuery');
 
 describe('Frequency Queries (Medium)', () => {
   before(() => {

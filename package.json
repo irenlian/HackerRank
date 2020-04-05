@@ -1,11 +1,9 @@
 {
-  "name": "HackerRank",
+  "name": "training",
   "version": "1.0.0",
-  "description": "",
-  "main": "draft.js",
+  "description": "Training repo with some algorithms",
   "scripts": {
-    "test": "mocha",
-    "lint": "eslint exercises/newYearChaos.js"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
