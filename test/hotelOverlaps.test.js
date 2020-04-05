@@ -1,5 +1,5 @@
 const chai = require('chai');
-const { hotel, reservation } = require('../random_excercises/challenges/hotelOverlaps');
+const { hotel, reservation } = require('../randomExcercises/challenges/hotelOverlaps');
 
 describe('Hotel', () => {
   before(() => {

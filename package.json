@@ -7,15 +7,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Somaliika/HackerRank.git"
+    "url": "git+https://github.com/irenlian/HackerRank.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Somaliika/HackerRank/issues"
+    "url": "https://github.com/irenlian/HackerRank/issues"
   },
-  "homepage": "https://github.com/Somaliika/HackerRank#readme",
+  "homepage": "https://github.com/irenlian/HackerRank#readme",
   "devDependencies": {
     "chai": "^4.2.0",
     "eslint": "^6.6.0",
