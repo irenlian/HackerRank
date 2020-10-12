@@ -18,11 +18,11 @@
   "homepage": "https://github.com/irenlian/HackerRank#readme",
   "devDependencies": {
     "chai": "^4.2.0",
-    "eslint": "^6.6.0",
-    "eslint-config-airbnb": "^18.0.1",
-    "eslint-config-airbnb-base": "^14.0.0",
-    "eslint-plugin-import": "^2.18.2",
-    "mocha": "^6.2.2"
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.1",
+    "mocha": "^6.2.3"
   },
   "directories": {
     "test": "test"
