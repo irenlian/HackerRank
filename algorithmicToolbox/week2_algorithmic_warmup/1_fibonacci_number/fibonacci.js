@@ -14,10 +14,10 @@ function readLine(line) {
 
 function fib(n) {
     let n1 = 1, n2 = 0;
-    let index = 2;
+    let index = 1;
 
-    if (n === 1) return n2;
-    if (n === 2) return n1;
+    if (n === 0) return n2;
+    if (n === 1) return n1;
 
     while (index++ < n) {
         const fibNumber = n1 + n2;
