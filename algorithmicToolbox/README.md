@@ -7,5 +7,9 @@ The course covers basic algorithmic techniques and ideas for computational probl
 
 ## My outcome
 
-- Week 1: Make a stress test comparing to the straightforward algorithm
-- Week 2: Try to create a formula taking notice of the dependencies between input and output
+- Week 1: Make a stress test comparing to the straightforward algorithm.
+- Week 2: Try to create a formula taking notice of the dependencies between input and output.
+- Week 3: Represent a problem mathematically. Consider the Greedy algorithm if there is a combinatorial problem.
+- Week 4:
+  - We can calculate the recursive algorithm complexity with the Master theorem.
+  - Divide the scope into a bigger amount of subtasks, but calculate not all of them. This will decrease the complexity substantially.

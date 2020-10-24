@@ -41,28 +41,6 @@ function stressTest() {
         }
       );
     }
-    // const itemsCount = 3;
-    // const knapsackCapacity = 50;
-    // const items = [
-    //   {
-    //     value: 60,
-    //     weight: 20,
-    //     pricePerWeight: 60/20,
-    //   },
-    //   {
-    //     value: 100,
-    //     weight: 50,
-    //     pricePerWeight: 100/50,
-    //   },
-    //   {
-    //     value: 120,
-    //     weight: 30,
-    //     pricePerWeight: 120/30,
-    //   },
-    // ];
-    // const itemsCount = 1;
-    // const knapsackCapacity = 10;
-    // const values = [500], weights = [30];
 
     const res1 = maxLootNaive(itemsCount, knapsackCapacity, items);
     const res2 = maxLoot(itemsCount, knapsackCapacity, items);
