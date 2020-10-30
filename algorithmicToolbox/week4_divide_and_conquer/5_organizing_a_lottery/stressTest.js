@@ -27,7 +27,7 @@ function isEqual(array1, array2) {
  */
 function stressTest() {
   while (true) {
-    const rangesCount = Math.floor(Math.random() * 5) + 1;
+    const rangesCount = Math.floor(Math.random() * 100) + 1;
     const betsCount = Math.floor(Math.random() * 10) + 1;
     const ranges = [];
     for (let i = 0; i < rangesCount; i++) {
