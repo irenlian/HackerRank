@@ -18,70 +18,46 @@ function readLine(line) {
   process.exit();
 }
 
-function getIJ(results, i, j, n) {
-  if (results[i][j]) return results[i][j];
+function getI(results, i) {
   const options = [];
   // check multiply by 3
-  if (results[i - 1] && results[i - 1][j]) {
-    if (results[i - 1][j] * 3 <= n) options.push(results[i - 1][j] * 3);
-    else options.push(0);
+  if (i % 3 === 0) {
+    options.push(results[i / 3] + 1);
   }
   // check multiply by 2
-  if (results[i][j - 1]) {
-    if (results[i][j - 1] * 2 <= n) options.push(results[i][j - 1] * 2);
-    else options.push(0);
+  if (i % 2 === 0) {
+    options.push(results[i / 2] + 1);
   }
   // check add 1
-  if (results[i - 1] && results[i - 1][j - 1]) {
-    if (results[i - 1][j - 1] + 1 <= n) options.push(results[i - 1][j - 1] + 1);
-    else options.push(0);
-  }
-  return Math.max(...options);
+  options.push(results[i - 1] + 1);
+  return Math.min(...options);
 }
 
-function getPath(results, i, j) {
+function getPath(results, i) {
   const path = [];
-  while (i >= 0 || j >= 0) {
-    path.push(results[i][j]);
-    if (results[i - 1] && results[i - 1][j] && results[i - 1][j] * 3 === results[i][j]) {
-      i--;
-    } else if (results[i][j - 1] && results[i][j - 1] * 2 === results[i][j]) {
-      j--;
+  while (i > 0) {
+    path.push(i);
+    if (i % 3 === 0 && results[i] - results[i / 3] === 1) {
+      i = i / 3;
+    } else if (i % 2 === 0 && results[i] - results[i / 2] === 1) {
+      i = i / 2;
     } else {
       i--;
-      j--;
     }
   }
   return path;
 }
 
-// O(n^2*logn)
+// O(n)
 function primitiveCalculator(n) {
-  const results = [[1]];
+  const results = [0, 0];
 
-  // fill the matrix with possible steps
-  for (let i = 0; i < n; i++) {
-    if (!results[i]) results[i] = [];
-    for (let j = 0; j < i; j++) {
-      results[i][j] = getIJ(results, i, j, n);
-    }
-    for (let k = 0; k <= i; k++) {
-      results[k][i] = getIJ(results,k, i, n);
-    }
+  // fill the array with possible steps
+  for (let i = 2; i <= n; i++) {
+    results[i] = getI(results, i);
   }
 
-  let fastestPath = Array.from({length: n}, (_, i) => i + 1);
-  for (let i = 0; i < n; i++) {
-    for (let j = 0; j < n; j++) {
-      if (results[i][j] === n) {
-        const path = getPath(results, i, j);
-        if (fastestPath.length > path.length) {
-          fastestPath = path;
-        }
-      }
-    }
-  }
-  return fastestPath;
+  return getPath(results, n);
 }
 
 module.exports = primitiveCalculator;

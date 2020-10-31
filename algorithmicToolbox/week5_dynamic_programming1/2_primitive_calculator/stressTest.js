@@ -18,8 +18,8 @@ function stressTest() {
   while (true) {
     // const n = 93;
     // const n = 92;
-    const n = 14;
-    // const n = Math.floor(Math.random() * 100) + 1;
+    // const n = 3;
+    const n = Math.floor(Math.random() * 100) + 1;
 
     console.log(n);
     const res1 = primitiveCalculatorNaive(n);
