@@ -13,4 +13,6 @@ The course covers basic algorithmic techniques and ideas for computational probl
 - Week 4:
   - We can calculate the recursive algorithm complexity with the Master theorem.
   ![Master theorem](master_theorem.png)
-  - Divide the scope into a bigger amount of subtasks, but calculate not all of them. This will decrease the complexity substantially.
+  - Divide the scope into a bigger amount of subtasks, but find a way to calculate not all of them. This will decrease the complexity substantially.
+  - If we have several parameters to calculate the result (like x and y for a point), presort them both, and divide by one of them.
+- Week 5:
