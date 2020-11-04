@@ -41,7 +41,7 @@ function getSouvenirs(capacity, souvenirs) {
   let i = souvenirs.length, j = capacity;
   while (i > 0 && j > 0) {
     const souvenir = souvenirs[i - 1];
-    if (matrix[i - 1][j] < matrix[i - 1][j - souvenir] + souvenir) {
+    if (matrix[i - 1][j] <= matrix[i - 1][j - souvenir] + souvenir) {
       j -= souvenir;
       chosen.push(souvenir);
     }
@@ -72,9 +72,12 @@ function partitioningSouvenirs(souvenirs) {
   const sum = souvenirs.reduce((s, value) => s + value, 0);
   if (sum % 3 !== 0) return 0;
 
+  // sort souvenirs to get bigger elements first
+  const sortedSouvenirs = souvenirs.sort((a, b) => a - b);
+
   // get souvenirs for the first person
-  const firstPerson = getSouvenirs(sum / 3, souvenirs);
-  const souvenirsLeft = getArrayDifference(souvenirs, firstPerson);
+  const firstPerson = getSouvenirs(sum / 3, sortedSouvenirs);
+  const souvenirsLeft = getArrayDifference(sortedSouvenirs, firstPerson);
 
   // get souvenirs for the second person
   const secondPerson = getSouvenirs(sum / 3, souvenirsLeft);
