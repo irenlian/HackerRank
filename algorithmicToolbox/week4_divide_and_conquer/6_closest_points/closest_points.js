@@ -85,6 +85,21 @@ function closestPointsRecursive(sortedByX, sortedByY, left = 0, right = sortedBy
 }
 
 /**
+ *
+ * Description: given the array of points in 2D space.
+ * We need to find the smallest distance between two of them.
+ *
+ * Solution: To decrease problem to the smaller subproblem we define it as
+ * the distance between two points or the minimum of smallest distance of two sectors.
+ * In this case we can use divide and conquer approach to split all into sectors by X
+ * and find the distance there at first.
+ *
+ * The challenge is in combining the results and calculating the distance between edge points.
+ * For this reason, we take only those points which are close to the middle by smallest distance
+ * we have found from the sectors apart.
+ * We know that we need to check the distance between the point and its only 5 consecutive points.
+ * That's why we sort them by Y coordinate and check 5 next points, getting the third uniting distance.
+ *
  * Complexity: 2nlogn + T(n)
  * T(n) = 2T(n/2) + O(5n)
  * According to Master theorem: O(nlogn)
