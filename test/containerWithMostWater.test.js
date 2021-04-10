@@ -1,5 +1,5 @@
 const chai = require('chai');
-const maxArea = require('../leetcode/containerWithMostWater');
+const maxArea = require('../leetcode/medium/containerWithMostWater');
 
 describe('Container With Most Water', () => {
   const inputs = [

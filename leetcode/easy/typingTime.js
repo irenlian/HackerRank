@@ -1,4 +1,4 @@
-//https://leetcode.com/explore/challenge/card/march-leetcoding-challenge-2021/588/week-1-march-1st-march-7th/3656/
+// https://leetcode.com/problems/single-row-keyboard/
 
 function calculateTime(keyboard, word) {
   const mapped = [...keyboard].reduce((m, key, i) => ({ ...m, [key]: i }), {});

@@ -1,5 +1,5 @@
 const chai = require('chai');
-const lengthOfLongestSubstring = require('../leetcode/longestSubstringWithoutRepeatingCharacters');
+const lengthOfLongestSubstring = require('../leetcode/medium/longestSubstringWithoutRepeatingCharacters');
 
 describe('Longest Substring Without Repeating Characters', () => {
   const inputs = [

@@ -1,4 +1,4 @@
-//https://leetcode.com/problems/generate-random-point-in-a-circle/solution/
+//https://leetcode.com/problems/generate-random-point-in-a-circle/
 
 class Solution {
   radius;
