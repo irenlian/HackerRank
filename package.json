@@ -28,6 +28,8 @@
     "test": "test"
   },
   "dependencies": {
+    "@datastructures-js/linked-list": "^5.0.1",
+    "@datastructures-js/priority-queue": "^5.0.3",
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "jquery": "^3.5.0"
