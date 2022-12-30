@@ -22,7 +22,7 @@
     "eslint-config-airbnb": "^18.2.0",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-plugin-import": "^2.22.1",
-    "mocha": "^6.2.3"
+    "mocha": "^10.2.0"
   },
   "directories": {
     "test": "test"
